@@ -119,7 +119,8 @@ def next_departure(orig, dest):
     Find the next departure time from the an origin station heading to
     destination station.
 
-    :param dest:
+    :param orig: string - origin station (abbreviation)
+    :param dest: string - destination station (abbreviation)
     :return: an iterable of string
     """
     direction = None

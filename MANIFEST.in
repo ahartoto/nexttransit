@@ -1,0 +1,9 @@
+# Filename: MANIFEST.in
+
+include LICENSE
+include README.rst
+
+include requirements.txt
+include setup.py
+
+recursive-include nexttransit *.py
