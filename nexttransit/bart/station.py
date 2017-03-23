@@ -69,16 +69,10 @@ class Station(stop.TransitStop):
 
     def __str__(self):
         """
-
-        :return:
+        :return: string - name of the station with the abbreviation in
+                          parenthesis
         """
-        msg = [
-            "{} is part of the following routes:".format(self.name),
-        ] + [
-            "  {}: {}".format(route_id, next_stop.name)
-            for route_id, next_stop in self.routes.items()
-        ]
-        return "\n".join(msg)
+        return "{} ({})".format(self.name, self.uid)
 
 
 def register_all_stations():
