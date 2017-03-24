@@ -7,7 +7,7 @@ NextTransit Error Module
 
 class NextTransitError(Exception):
     """
-
+    Base Exception class
     """
     pass
 

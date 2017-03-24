@@ -13,4 +13,4 @@ install:
     - pip install -e .
 
 # command to run tests
-script: py.test -s tests
+script: py.test -sv tests

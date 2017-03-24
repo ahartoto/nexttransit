@@ -33,39 +33,11 @@ class Station(stop.TransitStop):
                                                 key=config.VALIDATION_KEY)
         response = requests.get(url)
         if response.status_code == config.GetResponseCodeEnum.SUCCESS.value:
-            self.north_routes = set()
-            self.south_routes = set()
-
-            self.north_platforms = set()
-            self.south_platforms = set()
-
             xml_str = response.content.decode()
             root = ElementTree.fromstring(xml_str)
-            for node in root.iterfind('.//north_routes/route'):
+            for node in root.iterfind('.//route'):
                 if node.text is not None:
-                    self.north_routes.add(node.text.strip())
-
-            for node in root.iterfind('.//south_routes/route'):
-                if node.text is not None:
-                    self.south_routes.add(node.text.strip())
-
-            for node in root.iterfind('.//north_platforms/platform'):
-                if node.text is not None:
-                    self.north_platforms.add(node.text.strip())
-
-            for node in root.iterfind('.//south_platforms/platform'):
-                if node.text is not None:
-                    self.south_platforms.add(node.text.strip())
-
-    def platform(self, dest):
-        """
-        The platform number to be at to board from current station
-        to get to the destination station.
-
-        :param dest:
-        :return: string
-        """
-        pass
+                    self.routes.add(node.text.strip())
 
     def __str__(self):
         """
@@ -103,12 +75,20 @@ def register_all_stations():
 
 def get(uid):
     """
+    Get the instance which has the provide abbreviated station name
 
-    :param uid:
-    :return:
+    :param uid: string - abbreviated station name
+    :return: instance of station.Station
     """
     register_all_stations()
-    try:
-        return STATIONS[uid]
-    except KeyError:
-        return Station('foo', uid=uid)
+    return STATIONS[uid]
+
+
+def iter_station():
+    """
+    Iterate over all the registered stations
+
+    :return: iterator for going though all the registered stations
+    """
+    register_all_stations()
+    yield from STATIONS.values()

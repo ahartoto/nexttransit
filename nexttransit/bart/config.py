@@ -9,6 +9,8 @@ import os
 from enum import Enum
 
 
+STRFTIME = "%m/%d/%Y"
+
 VALIDATION_KEY = os.getenv('BART_VALIDATION_KEY', None)
 if VALIDATION_KEY is None:
     raise ImportError("cannot find the value of $BART_VALIDATION_KEY")
@@ -19,7 +21,7 @@ URL = {
                'key={key}&dir={direction}',
     'route_info': 'http://api.bart.gov/api/route.aspx?cmd=routeinfo&'
                   'route={number}&key={key}',
-    'routes': 'http://api.bart.gov/api/route.aspx?cmd=routes&'
+    'routes': 'http://api.bart.gov/api/route.aspx?cmd=routes&date={date}&'
               'key={key}',
     'station': 'http://api.bart.gov/api/stn.aspx?cmd=stns&key={key}',
     'station_info': 'http://api.bart.gov/api/stn.aspx?cmd=stninfo&'

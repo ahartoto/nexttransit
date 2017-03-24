@@ -7,13 +7,14 @@ Next Transit Coordinate Module
 
 class GTFSCoordinate(object):
     """
-
+    Coordinate/location of where the stops are
     """
     def __init__(self, latitude, longitude):
         """
+        Constructor
 
-        :param latitude:
-        :param longitude:
+        :param latitude: string
+        :param longitude: string
         """
         self.latitude = latitude
         self.longitude = longitude

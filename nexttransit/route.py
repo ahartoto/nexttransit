@@ -23,12 +23,3 @@ class Route(object):
         self.name = str(name)
         self.uid = str(uid)
         self.stops = list()
-
-    def in_route(self, origin, dest=None):
-        """
-
-        :param origin:
-        :param dest: (default: None)
-        :return: boolean
-        """
-        pass
